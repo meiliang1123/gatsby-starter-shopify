@@ -43,20 +43,20 @@ import { Seo } from "../components/seo"
 
 const DEFAULT_PRODUCTS_PER_PAGE = 24
 
-export async function getServerData({ query, ...rest }) {
-  const { getSearchResults } = require("../utils/search")
-  const products = await getSearchResults({
-    query,
-    count: DEFAULT_PRODUCTS_PER_PAGE,
-  })
+// export async function getServerData({ query, ...rest }) {
+//   const { getSearchResults } = require("../utils/search")
+//   const products = await getSearchResults({
+//     query,
+//     count: DEFAULT_PRODUCTS_PER_PAGE,
+//   })
 
-  return {
-    props: {
-      query,
-      products,
-    },
-  }
-}
+//   return {
+//     props: {
+//       query,
+//       products,
+//     },
+//   }
+// }
 
 export const query = graphql`
   {
@@ -75,6 +75,13 @@ function SearchPage({
   },
   location,
 }) {
+
+
+  serverData = {
+    query:'',
+    products:[]
+  }
+
   // These default values come from the page query string
   const queryParams = getValuesFromQuery(location.search || serverData.query)
 
