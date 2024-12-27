@@ -1138,12 +1138,24 @@
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
 
+"@contentful/rich-text-plain-text-renderer@^15.12.1":
+  version "15.15.1"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-plain-text-renderer/-/rich-text-plain-text-renderer-15.15.1.tgz#3ac956d9a74acb85393a3beafd0ed98e35b9c2a0"
+  integrity sha512-uk9JC3HtOrCekJSrStS+vzZiITefuaY0Tr0AMlp+0NgRh+b5i59CPq3feo1/WsvKIS360HlIhVjuyz1nMsQoTA==
+  dependencies:
+    "@contentful/rich-text-types" "^15.15.1"
+
 "@contentful/rich-text-react-renderer@^15.22.11":
   version "15.22.11"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-react-renderer/-/rich-text-react-renderer-15.22.11.tgz#111859f7278a42c52b8ad1ce9ffc2f877609fc83"
   integrity sha512-IDDdiFSab+C3G2HZRbFegTFuagl8dZpJHgWevoS9ODbatgC9GU6LcLz2hz7KKazsxuBJzgxnFsPd2v5+EtTHrg==
   dependencies:
     "@contentful/rich-text-types" "^16.8.5"
+
+"@contentful/rich-text-types@^15.15.1":
+  version "15.15.1"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-15.15.1.tgz#96835cf0d0eba9e54f92ee43a4a1ce2a74014b53"
+  integrity sha512-oheW0vkxWDuKBIIXDeJfZaRYo+NzKbC4gETMhH+MGJd4nfL9cqrOvtRxZBgnhICN4vDpH4my/zUIZGKcFqGSjQ==
 
 "@contentful/rich-text-types@^16.6.1", "@contentful/rich-text-types@^16.8.5":
   version "16.8.5"
@@ -8769,6 +8781,11 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
+
+reading-time@^2.0.0-1:
+  version "2.0.0-1"
+  resolved "https://registry.yarnpkg.com/reading-time/-/reading-time-2.0.0-1.tgz#fe7a94e1d9199700f166b744925681cdb8851d06"
+  integrity sha512-5Eoo17ZGqH2L0jmMZUNKARiGAX3NCC0LR+mDHTX+nMPqFSRwMQrsxhI9NOSEfzH8E1W5vGAKFcyQAk3Rla1WuA==
 
 recursive-readdir@^2.2.2:
   version "2.2.3"

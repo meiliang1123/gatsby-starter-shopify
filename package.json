@@ -20,6 +20,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@contentful/rich-text-plain-text-renderer": "^15.12.1",
+    "reading-time": "^2.0.0-1",
     "@sindresorhus/slugify": "^1.1.0",
     "debounce": "^1.2.1",
     "dotenv": "^10.0.0",

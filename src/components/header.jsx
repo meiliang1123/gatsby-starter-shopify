@@ -30,6 +30,9 @@ export function Header() {
           <Logo />
         </Link>
         <Navigation className={nav} />
+        <Link to="/blog" className={searchButton}>
+          <SearchIcon />
+        </Link>
         <Link to="/search" className={searchButton}>
           <SearchIcon />
         </Link>
