@@ -1,4 +1,5 @@
 require("dotenv").config()
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
@@ -31,7 +32,29 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST
       },
     },
-
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@components": path.resolve(__dirname, 'src/components'),
+          "@context": path.resolve(__dirname, 'src/context'),
+          "@utils": path.resolve(__dirname, 'src/utils'),
+          "@static": path.resolve(__dirname, 'static'),
+        },
+        extensions: ["js", "jsx", "css", "less"]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        lessOptions: {
+          javascriptEnabled: true,
+        },
+        options: {
+          // postCssPlugins: [somePostCssPlugin()],
+        },
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

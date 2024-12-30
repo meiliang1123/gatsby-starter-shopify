@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { StoreContext } from "../context/store-context"
+// import { StoreContext } from "../context/store-context"
+import { StoreContext } from "@context/store-context"
 import Logo from "../icons/logo"
 import { Navigation } from "./navigation"
 import { CartButton } from "./cart-button"

@@ -20,15 +20,19 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "@contentful/rich-text-plain-text-renderer": "^15.12.1",
-    "reading-time": "^2.0.0-1",
+    "@shopify/storefront-api-client": "^1.0.3",
     "@sindresorhus/slugify": "^1.1.0",
     "debounce": "^1.2.1",
     "dotenv": "^10.0.0",
     "gatsby": "^5.0.0",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-gatsby-cloud": "^5.0.0",
     "gatsby-plugin-google-analytics": "^5.0.0",
     "gatsby-plugin-image": "^3.14.0",
+    "gatsby-plugin-layout": "^4.14.0",
+    "gatsby-plugin-less": "^7.14.0",
     "gatsby-plugin-sharp": "^5.0.0",
     "gatsby-plugin-sitemap": "^6.0.0",
     "gatsby-source-contentful": "^8.15.0",
@@ -37,6 +41,7 @@
     "gatsby-transformer-sharp": "^5.0.0",
     "https-proxy-agent": "^7.0.6",
     "isomorphic-fetch": "^3.0.0",
+    "less": "^4.2.1",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
     "query-string": "^7.0.0",
@@ -44,6 +49,7 @@
     "react-dom": "^18.0.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.1.0",
+    "reading-time": "^2.0.0-1",
     "shopify-buy": "^2.11.0",
     "urql": "^2.0.2"
   }
