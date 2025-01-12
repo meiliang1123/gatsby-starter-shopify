@@ -54,7 +54,8 @@
   /* role-based tokens */
 
   /* colors */
-  --primary: var(--green-80);
+  /* --primary: var(--green-80); */
+  --primary: #4a90e2;
   --background: var(--white);
   --border: var(--black-fade-5);
 

@@ -1,12 +1,13 @@
 import * as React from "react"
 import { Auth0Provider } from '@auth0/auth0-react';
 import { StoreProvider } from "./src/context/store-context"
+import Layout from "./src/components/Layout/Layout"
 import "./src/styles/reset.css"
 import "./src/styles/variables.css"
 import "./src/styles/global.css"
 import "./src/styles/global.css"
 
-export const wrapRootElement = ({ element }) => {
+export const wrapRootElement = ({ element, props }) => {
 
   const onRedirectCallback = (appState) => {
     // Use Gatsby's navigate method to replace the url
@@ -21,7 +22,9 @@ export const wrapRootElement = ({ element }) => {
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
-      <StoreProvider>{element}</StoreProvider>
+      <StoreProvider>
+        <Layout {...props}>{element}</Layout>
+      </StoreProvider>
     </Auth0Provider>
   )
 }

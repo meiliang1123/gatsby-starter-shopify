@@ -2,7 +2,6 @@ import * as React from "react"
 import { Link } from "gatsby"
 /* 👇 Import the withAuthenticationRequired HOC 👇 */ 
 // import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import { Layout } from "@components/layout"
 import { StoreContext } from "@context/store-context"
 import { LineItem } from "@components/line-item"
 import { formatPrice } from "@utils/format-price"
@@ -35,7 +34,7 @@ const CartPage = () => {
   }
 
   return (
-    <Layout>
+    <>
       <div className={wrap}>
         {emptyCart ? (
           <div className={emptyStateContainer}>
@@ -121,7 +120,7 @@ const CartPage = () => {
           </>
         )}
       </div>
-    </Layout>
+    </>
   )
 }
 export default CartPage
