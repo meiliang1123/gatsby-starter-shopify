@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 
 import Seo from '../../components/blog/seo'
-import Layout from '../../components/blog/layout'
+// import Layout from '../../components/blog/layout'
 import Hero from '../../components/blog/hero'
 import ArticlePreview from '../../components/blog/article-preview'
 
@@ -12,11 +12,11 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allContentfulBlogPost.nodes')
 
     return (
-      <Layout location={this.props.location}>
+      <>
         <Seo title="Blog" />
         <Hero title="Blog" />
         <ArticlePreview posts={posts} />
-      </Layout>
+      </>
     )
   }
 }

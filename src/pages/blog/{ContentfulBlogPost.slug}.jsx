@@ -8,7 +8,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import readingTime from 'reading-time'
 
 import Seo from '../../components/blog/seo'
-import Layout from '../../components/blog/layout'
+// import Layout from '../../components/blog/layout'
 import Hero from '../../components/blog/hero'
 import Tags from '../../components/blog/tags'
 import * as styles from './blog-post.module.css'
@@ -39,7 +39,7 @@ class BlogPostTemplate extends React.Component {
     };
 
     return (
-      <Layout location={this.props.location}>
+      <>
         <Seo
           title={post.title}
           description={plainTextDescription}
@@ -83,7 +83,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </div>
         </div>
-      </Layout>
+      </>
     )
   }
 }

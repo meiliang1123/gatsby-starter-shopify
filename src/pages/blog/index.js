@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 
-import Layout from '../../components/blog/layout'
+// import Layout from '../../components/blog/layout'
 import Hero from '../../components/blog/hero'
 import ArticlePreview from '../../components/blog/article-preview'
 
@@ -12,14 +12,14 @@ class RootIndex extends React.Component {
     const [author] = get(this, 'props.data.allContentfulPerson.nodes')
 
     return (
-      <Layout location={this.props.location}>
+      <>
         <Hero
           image={author.heroImage.gatsbyImage}
           title={author.name}
           content={author.shortBio}
         />
         <ArticlePreview posts={posts} />
-      </Layout>
+      </>
     )
   }
 }

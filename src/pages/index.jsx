@@ -1,11 +1,10 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { Layout } from "../components/layout"
-import { ProductListing } from "../components/product-listing"
+import { ProductListing } from "@components/ProductList/ProductListing"
 import { Seo } from "../components/seo"
 import {
   container,
-  intro,
+  // intro,
   callOut,
   callToAction,
   deployButton,
@@ -23,7 +22,6 @@ export const query = graphql`
 function Hero (props) {
   return (
     <div className={container}>
-      <h1 className={intro}>Welcome to the GatsbyJS + Shopify Demo Store.</h1>
       {!!process.env.GATSBY_DEMO_STORE && (
         <>
           <p className={callOut}>
@@ -48,13 +46,14 @@ function Hero (props) {
   )
 }
 
-export default function IndexPage({ data }) {
+const IndexPage = ({ data }) => {
   return (
-    <Layout>
+    <>
       <Hero />
       <ProductListing products={data?.shopifyCollection?.products} />
-    </Layout>
+    </>
   )
 }
+export default IndexPage;
 
 export const Head = () => <Seo />

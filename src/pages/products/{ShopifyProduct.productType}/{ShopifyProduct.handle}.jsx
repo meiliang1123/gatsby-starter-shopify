@@ -1,22 +1,23 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
-import { Layout } from "../../../components/layout"
 import isEqual from "lodash.isequal"
 import { GatsbyImage, getSrc } from "gatsby-plugin-image"
-import { StoreContext } from "../../../context/store-context"
-import { AddToCart } from "../../../components/add-to-cart"
-import { NumericInput } from "../../../components/numeric-input"
-import { formatPrice } from "../../../utils/format-price"
-import { Seo } from "../../../components/seo"
+import { Carousel, Radio } from "@material-tailwind/react";
+
+import { StoreContext } from "@context/store-context"
+import { AddToCart } from "@components/add-to-cart"
+import { NumericInput } from "@components/numeric-input"
+import { formatPrice } from "@utils/format-price"
+import { Seo } from "@components/seo"
 import { CgChevronRight as ChevronIcon } from "react-icons/cg"
 import {
   productBox,
   container,
   header,
-  productImageWrapper,
-  productImageList,
-  productImageListItem,
-  scrollForMore,
+  // productImageWrapper,
+  // productImageList,
+  // productImageListItem,
+  // scrollForMore,
   noImagePreview,
   optionsWrapper,
   priceValue,
@@ -102,44 +103,42 @@ export default function Product({ data: { product, suggestions } }) {
   const hasMultipleImages = true || images.length > 1
 
   return (
-    <Layout>
+    <>
       <div className={container}>
         <div className={productBox}>
           {hasImages && (
-            <div className={productImageWrapper}>
-              <div
-                role="group"
-                aria-label="gallery"
-                aria-describedby="instructions"
-              >
-                <ul className={productImageList}>
-                  {images.map((image, index) => (
-                    <li
-                      key={`product-image-${image.id}`}
-                      className={productImageListItem}
-                    >
-                      <a href=''>abcs</a>
-                      <GatsbyImage
-                        objectFit="contain"
-                        loading={index === 0 ? "eager" : "lazy"}
-                        alt={
-                          image.altText
-                            ? image.altText
-                            : `Product Image of ${title} #${index + 1}`
-                        }
-                        image={image.gatsbyImageData}
-                      />
-                    </li>
+            <Carousel
+              className="rounded-xl"
+              navigation={({ setActiveIndex, activeIndex, length }) => (
+                <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                  {new Array(length).fill("").map((_, i) => (
+                    <span
+                      key={i}
+                      className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                        activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                      }`}
+                      onClick={() => setActiveIndex(i)}
+                    />
                   ))}
-                </ul>
-              </div>
-              {hasMultipleImages && (
-                <div className={scrollForMore} id="instructions">
-                  <span aria-hidden="true">←</span> scroll for more{" "}
-                  <span aria-hidden="true">→</span>
                 </div>
               )}
-            </div>
+            >
+              {
+                images.map((image, index) => (
+                  <GatsbyImage
+                    objectFit="contain"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    alt={
+                      image.altText
+                        ? image.altText
+                        : `Product Image of ${title} #${index + 1}`
+                    }
+                    className="h-full w-full object-cover"
+                    image={image.gatsbyImageData}
+                  />
+                ))
+              }
+            </Carousel>
           )}
           {!hasImages && (
             <span className={noImagePreview}>No Preview image</span>
@@ -203,7 +202,7 @@ export default function Product({ data: { product, suggestions } }) {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 

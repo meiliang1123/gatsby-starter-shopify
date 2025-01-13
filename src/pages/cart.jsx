@@ -1,9 +1,10 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { Layout } from "../components/layout"
-import { StoreContext } from "../context/store-context"
-import { LineItem } from "../components/line-item"
-import { formatPrice } from "../utils/format-price"
+/* 👇 Import the withAuthenticationRequired HOC 👇 */ 
+// import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { StoreContext } from "@context/store-context"
+import { LineItem } from "@components/line-item"
+import { formatPrice } from "@utils/format-price"
 import {
   table,
   wrap,
@@ -22,16 +23,18 @@ import {
 } from "./cart.module.css"
 import { Seo } from "../components/seo"
 
-export default function CartPage() {
+const CartPage = () => {
+  // const { isAuthenticated, loginWithRedirect,user } = useAuth0();
+
   const { checkout, loading } = React.useContext(StoreContext)
   const emptyCart = checkout.lineItems.length === 0
-
+  console.log(checkout, "checkout")
   const handleCheckout = () => {
     window.open(checkout.webUrl)
   }
 
   return (
-    <Layout>
+    <>
       <div className={wrap}>
         {emptyCart ? (
           <div className={emptyStateContainer}>
@@ -117,8 +120,9 @@ export default function CartPage() {
           </>
         )}
       </div>
-    </Layout>
+    </>
   )
 }
-
+export default CartPage
+// export default withAuthenticationRequired(CartPage)
 export const Head = () => <Seo />

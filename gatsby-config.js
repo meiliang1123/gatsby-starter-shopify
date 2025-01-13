@@ -1,4 +1,5 @@
 require("dotenv").config()
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
@@ -20,6 +21,7 @@ module.exports = {
         password: process.env.SHOPIFY_SHOP_PASSWORD,
         storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
         shopifyConnections: ["collections"],
+        apiVersion: "2024-10"
       },
     },
 
@@ -31,7 +33,32 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST
       },
     },
-
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@components": path.resolve(__dirname, 'src/components'),
+          "@ui": path.resolve(__dirname, 'src/ui'),
+          "@icons": path.resolve(__dirname, 'src/icons'),
+          "@context": path.resolve(__dirname, 'src/context'),
+          "@utils": path.resolve(__dirname, 'src/utils'),
+          "@static": path.resolve(__dirname, 'static'),
+        },
+        extensions: ["js", "jsx", "css", "less"]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-less`,
+      options: {
+        lessOptions: {
+          javascriptEnabled: true,
+        },
+        options: {
+          // postCssPlugins: [somePostCssPlugin()],
+        },
+      },
+    },
+    "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
