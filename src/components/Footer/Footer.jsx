@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Typography } from "@material-tailwind/react"
+import { Link } from "gatsby"
 import Logo from "@icons/logo"
 import "./Footer.less"
 
@@ -14,22 +15,18 @@ export function Footer() {
          <ul className="flex flex-wrap items-center gap-y-2 gap-x-8 justify-center underline underline-offset-2">
            <li>
              <Typography
-               as="a"
-               href="/about"
                color="gray" variant="paragraph"
                className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
              >
-               About Us
+              <Link to="/about">About Us</Link>
              </Typography>
            </li>
            <li>
              <Typography
-               as="a"
-               href="/contact"
                color="gray" variant="paragraph"
                className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
              >
-               Contact Us
+              <Link to="/contact">Contact Us</Link>
              </Typography>
            </li>
          </ul>
