@@ -21,7 +21,7 @@ import {
   emptyStateLink,
   title,
 } from "./cart.module.css"
-import { Seo } from "../components/seo"
+import { Seo } from "@components/seo"
 
 const CartPage = () => {
   // const { isAuthenticated, loginWithRedirect,user } = useAuth0();
