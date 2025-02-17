@@ -73,7 +73,7 @@ export function Header({className}) {
           <CartButton quantity={quantity} />
         </div>
         <Collapse open={openNav}>
-          <Navigation />
+          <Navigation onNavChange={() => setOpenNav(false)} />
         </Collapse>
       </Navbar>
       <Toast show={loading || didJustAddToCart}>

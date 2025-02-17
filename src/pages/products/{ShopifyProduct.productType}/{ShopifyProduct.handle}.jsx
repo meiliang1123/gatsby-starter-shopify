@@ -38,7 +38,7 @@ export default function Product({ data: { product, suggestions } }) {
     priceRangeV2,
     title,
     description,
-    images,
+    media: images,
   } = product
   const { client } = React.useContext(StoreContext)
 
@@ -101,7 +101,6 @@ export default function Product({ data: { product, suggestions } }) {
   const hasVariants = variants.length > 1
   const hasImages = images.length > 0
   const hasMultipleImages = true || images.length > 1
-
   return (
     <>
       <div className={container}>
@@ -129,12 +128,12 @@ export default function Product({ data: { product, suggestions } }) {
                     objectFit="contain"
                     loading={index === 0 ? "eager" : "lazy"}
                     alt={
-                      image.altText
-                        ? image.altText
+                      image?.image?.altText
+                        ? image?.image.altText
                         : `Product Image of ${title} #${index + 1}`
                     }
                     className="h-full w-full object-cover"
-                    image={image.gatsbyImageData}
+                    image={image?.image?.gatsbyImageData}
                   />
                 ))
               }
@@ -210,7 +209,7 @@ export const Head = ({ data: { product } }) => {
   const {
     title,
     description,
-    images: [firstImage],
+    media: [firstImage],
   } = product
 
   return (
@@ -219,7 +218,7 @@ export const Head = ({ data: { product } }) => {
         <Seo
           title={title}
           description={description}
-          image={getSrc(firstImage.gatsbyImageData)}
+          image={getSrc(firstImage?.image?.gatsbyImageData)}
         />
       ) : undefined}
     </>
@@ -247,10 +246,19 @@ export const query = graphql`
         }
       }
       storefrontId
-      images {
-        # altText
-        id
-        gatsbyImageData(layout: CONSTRAINED, width: 640, aspectRatio: 1)
+      # images {
+      #   # altText
+      #   id
+      #   gatsbyImageData(layout: CONSTRAINED, width: 640, aspectRatio: 1)
+      # }
+      media {
+        ... on ShopifyMediaImage {
+          image {
+            gatsbyImageData(layout: CONSTRAINED, width: 640, aspectRatio: 1)
+            altText
+          }
+          id
+        }
       }
       variants {
         availableForSale
@@ -265,7 +273,7 @@ export const query = graphql`
       options {
         name
         values
-        id
+        shopifyId
       }
     }
     suggestions: allShopifyProduct(

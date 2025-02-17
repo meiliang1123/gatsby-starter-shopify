@@ -22,7 +22,6 @@ export function LineItem({ item }) {
     loading,
   } = React.useContext(StoreContext)
   const [quantity, setQuantity] = React.useState(item.quantity)
-
   const variantImage = {
     ...item.variant.image,
     originalSrc: item.variant.image.src,

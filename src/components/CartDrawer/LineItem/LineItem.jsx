@@ -42,15 +42,15 @@ export function LineItem({ item }) {
   // eslint-disable-next-line
   const debouncedUli = React.useCallback((value) => uli(value), [])
 
-  // const handleQuantityChange = (value) => {
-  //   if (value !== "" && Number(value) < 1) {
-  //     return
-  //   }
-  //   setQuantity(value)
-  //   if (Number(value) >= 1) {
-  //     debouncedUli(value)
-  //   }
-  // }
+  const handleQuantityChange = (value) => {
+    if (value !== "" && Number(value) < 1) {
+      return
+    }
+    setQuantity(value)
+    if (Number(value) >= 1) {
+      debouncedUli(value)
+    }
+  }
 
   // function doIncrement() {
   //   handleQuantityChange(Number(quantity || 0) + 1)
