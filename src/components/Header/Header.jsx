@@ -31,12 +31,12 @@ export function Header({className}) {
     return total + item.quantity
   }, 0)
 
-   React.useEffect(() => {
-      window.addEventListener(
-        "resize",
-        () => window.innerWidth >= 960 && setOpenNav(false),
-      );
-    }, []);
+  React.useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false),
+    );
+  }, []);
 
   return (
     <header className={`${className} header-container`}>

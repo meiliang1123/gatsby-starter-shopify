@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql, Link } from "gatsby"
 import isEqual from "lodash.isequal"
 import { GatsbyImage, getSrc } from "gatsby-plugin-image"
-import { Carousel, Radio } from "@material-tailwind/react";
+import { Carousel, /* Radio */ } from "@material-tailwind/react";
 
 import { StoreContext } from "@context/store-context"
 import { AddToCart } from "@components/add-to-cart"
@@ -100,7 +100,7 @@ export default function Product({ data: { product, suggestions } }) {
 
   const hasVariants = variants.length > 1
   const hasImages = images.length > 0
-  const hasMultipleImages = true || images.length > 1
+  // const hasMultipleImages = true || images.length > 1
   return (
     <>
       <div className={container}>

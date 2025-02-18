@@ -74,8 +74,8 @@ export function LineItem({ item }) {
   )
 
   return (
-    <li class="flex py-6">
-      <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+    <li className="flex py-6">
+      <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
         {image && (
           <GatsbyImage
             key={variantImage.src}
@@ -84,18 +84,18 @@ export function LineItem({ item }) {
           />
         )}
       </div>
-      <div class="ml-4 flex flex-1 flex-col">
+      <div className="ml-4 flex flex-1 flex-col">
         <div>
-          <div class="flex justify-between text-base font-medium text-gray-900">
+          <div className="flex justify-between text-base font-medium text-gray-900">
             <h3>
               <a href="#">{item.title}</a>
             </h3>
-            <p class="ml-4">{`${price} / ${subtotal}`}</p>
+            <p className="ml-4">{`${price} / ${subtotal}`}</p>
           </div>
-          <p class="mt-1 text-sm text-gray-500">{item.variant.title === "Default Title" ? "" : item.variant.title}</p>
+          <p className="mt-1 text-sm text-gray-500">{item.variant.title === "Default Title" ? "" : item.variant.title}</p>
         </div>
-        <div class="flex flex-1 items-end justify-between text-sm">
-          <p class="text-gray-500">
+        <div className="flex flex-1 items-end justify-between text-sm">
+          <p className="text-gray-500">
             Qty: {quantity}
             {/* <NumericInput 
               disabled={loading}
@@ -107,8 +107,8 @@ export function LineItem({ item }) {
             /> */}
           </p>
 
-          <div class="flex">
-            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500" onClick={onRemove}>Remove</button>
+          <div className="flex">
+            <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={onRemove}>Remove</button>
           </div>
         </div>
       </div>

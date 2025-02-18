@@ -51,7 +51,7 @@ export function Navigation({ className, onNavChange }) {
 
     const renderItems = list.map((name, key) => {
       return (
-        <MenuItem key={key} className="hover:text-black text-gray-900">
+        <MenuItem key={`menuitem${key}`} className="hover:text-black text-gray-900">
           {
             name ? <LinkCustom  to={`/products/${slugify(name)}`}>{name}</LinkCustom> : <LinkCustom to="/products/">All products</LinkCustom>
           }

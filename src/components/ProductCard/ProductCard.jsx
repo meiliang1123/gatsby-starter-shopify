@@ -60,15 +60,15 @@ export function ProductCard({ product, eager }) {
           <div style={{ height: defaultImageHeight, width: defaultImageWidth }} />
         )
       }
-      <div class="product-details mt-4 flex justify-between">
+      <div className="product-details mt-4 flex justify-between">
         <div>
-          <h3 class="product-heading text-sm text-gray-700">
-            <span aria-hidden="true" class="absolute inset-0"></span>
+          <h3 className="product-heading text-sm text-gray-700">
+            <span aria-hidden="true" className="absolute inset-0"></span>
             {title}
           </h3>
-          <p class="product-vendor mt-1 text-sm text-gray-500">{vendor}</p>
+          <p className="product-vendor mt-1 text-sm text-gray-500">{vendor}</p>
         </div>
-        <p class="product-price text-sm font-medium text-gray-900">{price}</p>
+        <p className="product-price text-sm font-medium text-gray-900">{price}</p>
       </div>
       {/* <div className="product-details">
         <div className="product-vendor">{vendor}</div>
