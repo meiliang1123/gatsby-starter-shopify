@@ -12,6 +12,7 @@
   --green-80: #088413;
   --green-50-rgb: 55, 182, 53;
   --white: #ffffff;
+  --dark: #121212
 
   /* radii */
   --radius-sm: 4px;
@@ -70,6 +71,7 @@
   --text-color: var(--grey-90);
   --text-color-secondary: var(--grey-50);
   --text-color-inverted: var(--white);
+  
   /* size */
   --text-display: var(--text-2xl);
   --text-prose: var(--text-md);
@@ -113,5 +115,12 @@
 @media (min-width: 1280px) {
   :root {
     --product-grid: repeat(4, 1fr);
+  }
+}
+
+/* 检测到暗色模式时应用的样式 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #fff;
   }
 }
