@@ -16,7 +16,7 @@ const ArticlePreview = ({ posts }) => {
       <ul className={styles.articleList}>
         {posts.map((post) => {
           return (
-            <li key={post.slug}>
+            <li key={`${post.slug}${Math.random()}`}>
               <Link to={`/blog/${post.slug}`} className={styles.link}>
                 <GatsbyImage alt="" image={post.heroImage.gatsbyImage} />
                 <h2 className={styles.title}>{post.title}</h2>

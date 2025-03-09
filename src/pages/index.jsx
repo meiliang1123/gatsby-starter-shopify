@@ -1,5 +1,8 @@
 import * as React from "react"
 import { graphql } from "gatsby"
+import Frontpage from "@components/HomePage/Frontpage"
+import Recommend from "@components/HomePage/Recommend"
+import Selling from "@components/HomePage/Selling"
 import { ProductListing } from "@components/ProductList/ProductListing"
 import { Seo } from "../components/seo"
 import {
@@ -12,7 +15,17 @@ import {
 
 export const query = graphql`
   query {
-    shopifyCollection(handle: { eq: "frontpage" }) {
+    recommend: shopifyCollection(handle: { eq: "recommend" }) {
+      products {
+        ...ProductCard
+      }
+    },
+    frontpage: shopifyCollection(handle: { eq: "frontpage" }) {
+      products {
+        ...ProductCard
+      }
+    },
+    selling: shopifyCollection(handle: { eq: "selling" }) {
       products {
         ...ProductCard
       }
@@ -47,10 +60,15 @@ function Hero (props) {
 }
 
 const IndexPage = ({ data }) => {
+  console.log(data, "开始的方式快递发")
   return (
     <>
       <Hero />
-      <ProductListing products={data?.shopifyCollection?.products} />
+      <Frontpage data={data.frontpage} />
+      <Recommend data={data.recommend} />
+      <Selling data={data.selling} />
+      {/* <ProductListing products={data?.shopifyCollection?.products} /> */}
+      <ProductListing products={data?.frontpage?.products} />
     </>
   )
 }

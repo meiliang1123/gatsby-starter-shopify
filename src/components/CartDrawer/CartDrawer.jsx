@@ -83,7 +83,7 @@ export function CartDrawer({ visible, onClose }) {
             </Link>
           </div>
         ) : (
-          <ul role="list" class="-my-6 divide-y divide-gray-200">
+          <ul role="list" className="-my-6 divide-y divide-gray-200">
             {
               checkout.lineItems.map((item) => (
                 <LineItem item={item} key={item.id} />
@@ -94,7 +94,7 @@ export function CartDrawer({ visible, onClose }) {
       </div>
       {
         !emptyCart && <div className="cart-drawer-footer border-t border-gray-200 px-4 py-6 sm:px-6">
-          <div class="flex justify-between text-base font-medium text-gray-900">
+          <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Subtotal</p>
             <p>
               {formatPrice(
@@ -103,7 +103,7 @@ export function CartDrawer({ visible, onClose }) {
               )}
             </p>
           </div>
-          <div class="flex justify-between text-base font-medium text-gray-900">
+          <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Taxes</p>
             <p>
               {formatPrice(
@@ -112,14 +112,14 @@ export function CartDrawer({ visible, onClose }) {
               )}
             </p>
           </div>
-          <p class="mt-0.5 text-sm text-gray-500">Shipping calculated at checkout.</p>
-          <div class="mt-6" onClick={onCheckout}>
-            <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</a>
+          <p className="mt-0.5 text-sm text-gray-500">Shipping calculated at checkout.</p>
+          <div className="mt-6" onClick={onCheckout}>
+            <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</a>
           </div>
-          <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
+          <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
             <p>
               or
-              <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500" onClick={closeDrawerRight}>
+              <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={closeDrawerRight}>
                 Continue Shopping
                 <span aria-hidden="true"> &rarr;</span>
               </button>
