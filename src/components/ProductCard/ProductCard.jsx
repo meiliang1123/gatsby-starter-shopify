@@ -96,7 +96,7 @@ export const query = graphql`
     media {
       ... on ShopifyMediaImage {
         image {
-          gatsbyImageData(aspectRatio: 1, width: 640),
+          gatsbyImageData(aspectRatio: 1, width: 640, layout: FULL_WIDTH),
           altText
         }
         id
