@@ -15,6 +15,11 @@ import {
 
 export const query = graphql`
   query {
+    all: allShopifyProduct {
+      nodes {
+        ...ProductCard
+      }
+    },
     recommend: shopifyCollection(handle: { eq: "recommend" }) {
       products {
         ...ProductCard
@@ -60,7 +65,6 @@ function Hero (props) {
 }
 
 const IndexPage = ({ data }) => {
-  console.log(data, "开始的方式快递发")
   return (
     <>
       <Hero />
@@ -68,7 +72,7 @@ const IndexPage = ({ data }) => {
       <Recommend data={data.recommend} />
       <Selling data={data.selling} />
       {/* <ProductListing products={data?.shopifyCollection?.products} /> */}
-      <ProductListing products={data?.frontpage?.products} />
+      <ProductListing products={data?.all?.nodes} />
     </>
   )
 }
