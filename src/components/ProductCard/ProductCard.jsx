@@ -11,21 +11,20 @@ export function ProductCard({ product, eager }) {
     title,
     priceRangeV2,
     slug,
-    media: [firstImage],
+    media,
     vendor,
     storefrontImages,
   } = product
-  
   const price = formatPrice(
     priceRangeV2.minVariantPrice.currencyCode,
     priceRangeV2.minVariantPrice.amount
   )
-
+  
   const defaultImageHeight = 200
   const defaultImageWidth = 200
   let storefrontImageData = {}
   if (storefrontImages) {
-    const storefrontImage = storefrontImages.edges[0].node
+    const storefrontImage = storefrontImages.edges[0]?.node
     try {
       storefrontImageData = getShopifyImage({
         image: storefrontImage,
@@ -37,9 +36,9 @@ export function ProductCard({ product, eager }) {
       console.error(e)
     }
   }
-
+  const firstImage = media?.[0]
   const hasImage = firstImage || Object.getOwnPropertyNames(storefrontImageData || {}).length
-
+  
   return (
     <Link
       className="product-card-container group relative"
