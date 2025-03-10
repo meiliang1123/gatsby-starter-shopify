@@ -15,17 +15,16 @@ export function ProductCard({ product, eager }) {
     vendor,
     storefrontImages,
   } = product
-  
   const price = formatPrice(
     priceRangeV2.minVariantPrice.currencyCode,
     priceRangeV2.minVariantPrice.amount
   )
-
+  
   const defaultImageHeight = 200
   const defaultImageWidth = 200
   let storefrontImageData = {}
   if (storefrontImages) {
-    const storefrontImage = storefrontImages.edges[0].node
+    const storefrontImage = storefrontImages.edges[0]?.node
     try {
       storefrontImageData = getShopifyImage({
         image: storefrontImage,
