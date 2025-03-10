@@ -11,7 +11,7 @@ export function ProductCard({ product, eager }) {
     title,
     priceRangeV2,
     slug,
-    media: [firstImage],
+    media,
     vendor,
     storefrontImages,
   } = product
@@ -37,9 +37,9 @@ export function ProductCard({ product, eager }) {
       console.error(e)
     }
   }
-
+  const firstImage = media?.[0]
   const hasImage = firstImage || Object.getOwnPropertyNames(storefrontImageData || {}).length
-
+  
   return (
     <Link
       className="product-card-container group relative"
