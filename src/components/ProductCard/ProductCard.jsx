@@ -106,6 +106,10 @@ export const query = graphql`
         amount
         currencyCode
       }
+      maxVariantPrice {
+        amount
+        currencyCode
+      }
     }
     vendor
   }

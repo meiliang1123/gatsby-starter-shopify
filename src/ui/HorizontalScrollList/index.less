@@ -1,0 +1,14 @@
+.scroll-container{
+  width: 100%;
+  .scroll-button{
+    position: absolute;
+    border-radius: 50%;
+  }
+  .scroll-body{
+    width: 100%;
+    overflow-x: auto;
+    &>*{
+      flex-shrink: 0;
+    }
+  }
+}

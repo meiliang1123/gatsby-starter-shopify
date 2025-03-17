@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 // import get from 'lodash/get'
@@ -12,17 +13,19 @@ import Seo from '../../components/blog/seo'
 import Hero from '../../components/blog/hero'
 import Tags from '../../components/blog/tags'
 import * as styles from './blog-post.module.css'
+import ProductForPost from "@components/ProductForPost"
 
-const BlogPostTemplate = ({ data }) => {
-  const { contentfulBlogPost: post, previous, next } = data
-  console.log(data, "博文详情", post)
+const ProductTemplate = ({ data }) => {
+  const { contentfulProduct } = data
+  const { shopifyId, body, title, description, featuredProductImage } = contentfulProduct
+  console.log(data, "产品详情", shopifyId)
     // const post = get(this.props, 'data.contentfulBlogPost')
     // const previous = get(this.props, 'data.previous')
     // const next = get(this.props, 'data.next')
-    const plainTextDescription = documentToPlainTextString(
-      JSON.parse(post.description.raw)
-    )
-    const plainTextBody = documentToPlainTextString(JSON.parse(post.body.raw))
+    // const plainTextDescription = documentToPlainTextString(
+    //   JSON.parse(post.description.raw)
+    // )
+    const plainTextBody = documentToPlainTextString(JSON.parse(body?.raw || '{}'))
     const { minutes: timeToRead } = readingTime(plainTextBody)
     
     const options = {
@@ -38,20 +41,24 @@ const BlogPostTemplate = ({ data }) => {
         },
       },
     };
-
+    console.log(contentfulProduct, "post")
     return (
       <>
         <Seo
-          title={post.title}
-          description={plainTextDescription}
-          image={`http:${post.heroImage.resize.src}`}
+          title={title}
+          description={description.description}
+          image={`${featuredProductImage?.resize?.src}`}
         />
         <Hero
-          image={post.heroImage?.gatsbyImage}
-          title={post.title}
-          content={post.description}
+          image={featuredProductImage?.gatsbyImageData}
+          title={title}
+          content={description.description}
         />
-        <div className={styles.container}>
+        <div className={styles.body}>
+          {body?.raw && renderRichText(body, options)}
+        </div>
+        <ProductForPost id = {shopifyId} />
+        {/* <div className={styles.container}>
           <span className={styles.meta}>
             {post.author?.name} &middot;{' '}
             <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
@@ -83,49 +90,36 @@ const BlogPostTemplate = ({ data }) => {
               </nav>
             )}
           </div>
-        </div>
+        </div> */}
       </>
     )
   }
 
-export default BlogPostTemplate
+export default ProductTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $slug: String!
-    $previousPostSlug: String
-    $nextPostSlug: String
-  ) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      slug
-      title
-      author {
-        name
+  query ProductBySlug($slug: String!) {
+    contentfulProduct(slug: { eq: $slug }) {
+      id
+      internalName
+      name
+      price
+      shopifyId
+      body {
+        raw
       }
-      publishDate(formatString: "MMMM Do, YYYY")
-      rawDate: publishDate
-      heroImage {
-        gatsbyImage(layout: FULL_WIDTH, placeholder: BLURRED, width: 1280)
+      description {
+        description
+      }
+      featuredProductImage {
+        gatsbyImageData(layout: FIXED)
         resize(height: 630, width: 1200) {
           src
         }
       }
-      body {
-        raw
-        
+      productImages {
+        gatsbyImageData(layout: FIXED)
       }
-      tags
-      description {
-        raw
-      }
-    }
-    previous: contentfulBlogPost(slug: { eq: $previousPostSlug }) {
-      slug
-      title
-    }
-    next: contentfulBlogPost(slug: { eq: $nextPostSlug }) {
-      slug
-      title
     }
   }
 `
