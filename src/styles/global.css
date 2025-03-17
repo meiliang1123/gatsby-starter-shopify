@@ -7,6 +7,19 @@ body {
   color: var(--text-color);
   height: 100vh;
 }
+.body-mask::before{
+  content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+    background: rgb(251 251 251 / 27%);
+    filter: blur(10px);
+    --tw-backdrop-saturate: saturate(2);
+    backdrop-filter: blur(0px);  
+  }
 
 .gatsby-image-wrapper {
   margin: auto;
