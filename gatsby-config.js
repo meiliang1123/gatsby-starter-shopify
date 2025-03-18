@@ -3,8 +3,8 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    siteTitle: "gatsby-starter-shopify",
-    siteTitleDefault: "gatsby-starter-shopify by @GatsbyJS",
+    siteTitle: "handedock",
+    siteTitleDefault: "handedock store",
     siteUrl: "https://shopify-demo.gatsbyjs.com",
     siteDescription:
       "A Gatsby starter using the latest Shopify plugin showcasing a store with product overview, individual product pages, and a cart.",
