@@ -72,7 +72,7 @@ const IndexPage = ({ data }) => {
       <Hero />
       <div className="w-full bg-gray-900 h-[600px] overflow-clip home-video relative">
         <video muted autoPlay loop playsInline className="w-full">
-          <source src="/static/index.webm" type="video/webm" />
+          <source src="/index.webm" type="video/webm" />
           你的浏览器不支持 WebM 格式。
         </video>
         <div className="absolute flex text-white top-0 left-0 h-full w-full bg-black bg-opacity-20 backdrop-blur-md text-left">
