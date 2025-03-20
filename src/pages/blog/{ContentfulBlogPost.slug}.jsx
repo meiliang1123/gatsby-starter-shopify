@@ -32,7 +32,7 @@ const BlogPostTemplate = ({ data }) => {
         return (
            <GatsbyImage
               image={getImage(gatsbyImage)}
-              alt={description}
+              alt={description || ""}
            />
          )
         },

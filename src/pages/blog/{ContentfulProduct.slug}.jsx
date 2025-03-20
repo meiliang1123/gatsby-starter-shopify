@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { /* Link, */ graphql } from 'gatsby'
 // import get from 'lodash/get'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
@@ -11,14 +11,14 @@ import readingTime from 'reading-time'
 import Seo from '../../components/blog/seo'
 // import Layout from '../../components/blog/layout'
 import Hero from '../../components/blog/hero'
-import Tags from '../../components/blog/tags'
+// import Tags from '../../components/blog/tags'
 import * as styles from './blog-post.module.css'
 import ProductForPost from "@components/ProductForPost"
 
 const ProductTemplate = ({ data }) => {
   const { contentfulProduct } = data
   const { shopifyId, body, title, description, featuredProductImage } = contentfulProduct
-  console.log(data, "产品详情", shopifyId)
+  console.log(data, "产品详情", shopifyId, title)
     // const post = get(this.props, 'data.contentfulBlogPost')
     // const previous = get(this.props, 'data.previous')
     // const next = get(this.props, 'data.next')
@@ -27,7 +27,7 @@ const ProductTemplate = ({ data }) => {
     // )
     const plainTextBody = documentToPlainTextString(JSON.parse(body?.raw || '{}'))
     const { minutes: timeToRead } = readingTime(plainTextBody)
-    
+    console.log(timeToRead)
     const options = {
       renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
@@ -45,7 +45,7 @@ const ProductTemplate = ({ data }) => {
     return (
       <>
         <Seo
-          title={title}
+          title={title || ""}
           description={description.description}
           image={`${featuredProductImage?.resize?.src}`}
         />

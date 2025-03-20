@@ -2,13 +2,10 @@ import React from "react";
 import * as motion from "motion/react-client"
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { Carousel } from "@material-tailwind/react";
 import { Button } from "@material-tailwind/react";
 import "./index.less"
 const Frontpage = ({ data }) => {
   const { products } = data
-
-  console.log(products, "开始的方式快递发", data)
 
   const itemBuilder = (product, index) => {
     const { slug, title, media, priceRangeV2 } = product

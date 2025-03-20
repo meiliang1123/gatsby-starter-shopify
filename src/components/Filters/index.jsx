@@ -1,12 +1,12 @@
-import * as React from "react"
-import { CheckFilter } from "./check-filter"
-import { CurrencyField } from "./currency-field"
+import React from "react"
 import {
-  priceFilterStyle,
-  clearButton,
-  priceFields,
-  summary,
-} from "./filters.module.css"
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "@material-tailwind/react";
+import { CgRedo } from "react-icons/cg";
+import { CheckFilter } from "./CheckFilter"
+import { CurrencyField } from "./CurrencyField"
 
 export function Filters({
   currencyCode,
@@ -39,13 +39,13 @@ export function Filters({
         setSelectedItems={(value) => updateFilter("productTypes", value)}
       />
       <hr />
-      <details className={priceFilterStyle} open={true}>
-        <summary>
-          <div className={summary}>
+      <Accordion open={true} className="filter-block-container">
+        <AccordionHeader className="accordion-header border-none flex items-center justify-between text-md">
+          <div className="flex items-center">
             Price
             {(filters.maxPrice || filters.minPrice) && (
               <button
-                className={clearButton}
+                className="text-gray-600 ml-4"
                 onClick={() =>
                   setFilters((filters) => ({
                     ...filters,
@@ -54,15 +54,17 @@ export function Filters({
                   }))
                 }
               >
-                Reset
+                <CgRedo />
               </button>
             )}
           </div>
-        </summary>
-        <div className={priceFields}>
+        </AccordionHeader>
+        <AccordionBody>
           <CurrencyField
             {...currencyCode}
             aria-label="Minimum price"
+            label="Minimum price"
+            placeholder="Minimum price"
             value={filters.minPrice}
             onChange={(event) =>
               updateNumeric("minPrice", event.currentTarget.value)
@@ -72,13 +74,15 @@ export function Filters({
           <CurrencyField
             {...currencyCode}
             aria-label="Maximum price"
+            label="Maximum price"
+            placeholder="Maximum price"
             value={filters.maxPrice}
             onChange={(event) =>
               updateNumeric("maxPrice", event.currentTarget.value)
             }
           />
-        </div>
-      </details>
+        </AccordionBody>
+      </Accordion>
       <hr />
       <CheckFilter
         name="Brands"

@@ -50,7 +50,7 @@ export function Navigation({ className, onNavChange }) {
 
   const LinkCustom = ({to, children}) => {
     return (
-      <div onClick={() => onNavigate(to)}>
+      <div role="button" alaria-label="nav link" onClick={() => onNavigate(to)}>
         {children}
       </div>
     )
