@@ -130,7 +130,7 @@ export const pageQuery = graphql`
         }
         author {
           image {
-            gatsbyImage
+            gatsbyImage(width: 424)
           }
           name
           phone
@@ -172,7 +172,7 @@ export const pageQuery = graphql`
           id
           slug
           productImages {
-            gatsbyImageData
+            gatsbyImageData(width: 640)
             description
             title
           }
