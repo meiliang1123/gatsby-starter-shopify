@@ -33,7 +33,7 @@ const ArticlePreivew = ({data, type}) => {
             time: item.createdAt,
             href: `/blog/${item.slug}`,
             description: item.description?.description,
-            secondDescription: `price/${item.price}`,
+            secondDescription: `Price：$${item.price}`,
             featuredImage: item.featuredProductImage?.gatsbyImage
           }
         })

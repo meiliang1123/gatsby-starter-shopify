@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
+import { Button } from "@material-tailwind/react";
 // import { GatsbyImage } from "gatsby-plugin-image"
 // import { getShopifyImage } from "gatsby-source-shopify"
 import { urqlClient } from "@context/search-provider"
@@ -9,6 +10,7 @@ import "./index.less"
 import { lowerCase } from "lodash"
 
 const ProductForPost = (props) => {
+  const { className } = props
   const { client } = React.useContext(StoreContext)
   const [data, setData] = useState({})
 
@@ -64,16 +66,17 @@ const ProductForPost = (props) => {
       {id}
     ).toPromise()
     setData(results.data?.product || {})
-    console.log("fetchProduct", results)
+    // console.log("fetchProduct", results)
   }
   
   return (
-    <>
-      <div>{data.title}</div>
+    <div className={`flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-md w-full px-5 py-3 text-white ${className}`}>
+      <div className="font-bold text-lg">{data.title}</div>
       <Link to={`/products/${lowerCase(data.productType)}/${data.handle}`}>
-        buy now
+        {/* <Button className="bg-[var(--primary)]">Buy now</Button> */}
+        <Button color="white">Buy now</Button>
       </Link>
-    </>
+    </div>
   )
 }
 

@@ -28,7 +28,7 @@ export function NumericInput({
           size="sm"
           variant="text"
           className="rounded"
-          onClick={onIncrement}
+          onClick={onDecrement}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export function NumericInput({
           size="sm"
           variant="text"
           className="rounded"
-          onClick={onDecrement}
+          onClick={onIncrement}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
