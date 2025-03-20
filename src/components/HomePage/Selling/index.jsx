@@ -17,7 +17,7 @@ const Selling = ({data}) => {
   const products = data.products || []
 
   const itemBuilder = (product, index) => {
-    const { slug, title, media, priceRangeV2 } = product
+    const { slug, title, media, /* priceRangeV2 */ } = product
     return (
       <Card key={index} className="item mt-6">
         <CardHeader color="blue-gray" className="relative h-56">

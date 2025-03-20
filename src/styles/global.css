@@ -29,6 +29,10 @@ body {
   border-radius: var(--radius-sm);
 }
 
+.custom-overlay{
+  position: fixed!important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

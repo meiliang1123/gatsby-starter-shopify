@@ -1,31 +1,33 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import * as motion from "motion/react-client"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Carousel } from "@material-tailwind/react";
-import { Button } from "@material-tailwind/react";
+// import { Button } from "@material-tailwind/react";
 // import get from 'lodash/get'
 
 // import Layout from '../../components/blog/layout'
-import Hero from '@components/blog/hero'
-import ArticlePreview from '@components/blog/article-preview'
+// import Hero from '@components/blog/hero'
+// import ArticlePreview from '@components/blog/article-preview'
+import ArticlePreview from "@components/blog/ArticlePreivew"
 
 const BlogIndex = ({ data }) => {
   console.log(data, "博文list" )
-  const { allContentfulBlogPost, allContentfulLandingPage, allContentfulProduct, allContentfulPerson } = data
+  const { allContentfulBlogPost, allContentfulLandingPage, allContentfulProduct } = data
   const posts = allContentfulBlogPost.nodes || []
-  const author = allContentfulPerson.nodes?.[0] || {}
+  // const author = allContentfulPerson.nodes?.[0] || {}
   const landingPages = allContentfulLandingPage.nodes || []
   const products = allContentfulProduct.nodes || []
   // const posts = get(this, 'props.data.allContentfulBlogPost.nodes')
   // const [author] = get(this, 'props.data.allContentfulPerson.nodes')
 
   const itemBuilder = (page, index) => {
-    const { slug, internalName, heroBannerImage, heroBannerHeadline } = page
+    const { /*slug, */internalName, heroBannerImage, heroBannerHeadline } = page
     return (
       <div className="item-container relative" key={index}>
         <motion.div
+          key={`motion${index}`}
           className="motion-container absolute z-10 left-0 text-white w-[100%] h-[100%] bg-black bg-opacity-20 backdrop-blur-sm"
           whileInView={{ opacity: 1 }}  // 初始宽度 80%
           initial={{ opacity: 0 }}  // 进入视口后变为 100%
@@ -62,8 +64,9 @@ const BlogIndex = ({ data }) => {
         navigation={({ setActiveIndex, activeIndex, length }) => (
           <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
             {new Array(length).fill("").map((_, i) => (
-              <span
+              <button
                 key={i}
+                aria-label="slide"
                 className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
                   activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
                 }`}
@@ -79,18 +82,22 @@ const BlogIndex = ({ data }) => {
           })
         }
       </Carousel>
-      <Hero
+      {/* <Hero
         image={author.heroImage.gatsbyImage}
         title={author.name}
         content={author.shortBio}
-      />
-      <ArticlePreview posts={posts} />
+      /> */}
+      <h1 className="text-4xl font-bold text-center px-5 mt-14 mb-8">News atest</h1>
+      <ArticlePreview type="post" data={posts} />
+      <h1 className="text-4xl font-bold text-center px-5 mt-14 mb-8">Artical about product</h1>
+      <ArticlePreview type="product" data={products} />
+      {/* <ArticlePreview posts={posts} />
       <ArticlePreview posts={products.map(item => {
         return {
           ...item,
           heroImage: item.featuredProductImage
         }
-      })} />
+      })} /> */}
     </>
   )
 }
@@ -121,6 +128,14 @@ export const pageQuery = graphql`
         description {
           raw
         }
+        author {
+          image {
+            gatsbyImage
+          }
+          name
+          phone
+          title
+        }
       }
     }
     allContentfulProduct {
@@ -137,6 +152,7 @@ export const pageQuery = graphql`
         featuredProductImage {
           gatsbyImage(layout: FIXED, width: 424)
         }
+        createdAt
       }
     }
     allContentfulLandingPage {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { graphql, Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-import { getShopifyImage } from "gatsby-source-shopify"
+import { Link } from "gatsby"
+// import { GatsbyImage } from "gatsby-plugin-image"
+// import { getShopifyImage } from "gatsby-source-shopify"
 import { urqlClient } from "@context/search-provider"
 import { StoreContext } from "@context/store-context"
 
@@ -21,7 +21,7 @@ const ProductForPost = (props) => {
         console.log(fetchedProduct, "result=====")
       })
     }
-  }, [])
+  })
 
   const fetchProduct = async (id) => {
     const results = await urqlClient.query(

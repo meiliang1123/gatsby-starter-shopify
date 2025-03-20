@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Link } from "gatsby"
 import {
   Drawer,
-  // Button,
+  Button,
   Typography,
   IconButton,
 } from "@material-tailwind/react";
@@ -83,7 +83,7 @@ export function CartDrawer({ visible, onClose }) {
             </Link>
           </div>
         ) : (
-          <ul role="list" className="-my-6 divide-y divide-gray-200">
+          <ul className="-my-6 divide-y divide-gray-200">
             {
               checkout.lineItems.map((item) => (
                 <LineItem item={item} key={item.id} />
@@ -93,7 +93,7 @@ export function CartDrawer({ visible, onClose }) {
         )}
       </div>
       {
-        !emptyCart && <div className="cart-drawer-footer border-t border-gray-200 px-4 py-6 sm:px-6">
+        !emptyCart && <div className="cart-drawer-footer border-t border-gray-200 px-4 py-6 mt-6 sm:px-6">
           <div className="flex justify-between text-base font-medium text-gray-900">
             <p>Subtotal</p>
             <p>
@@ -113,9 +113,17 @@ export function CartDrawer({ visible, onClose }) {
             </p>
           </div>
           <p className="mt-0.5 text-sm text-gray-500">Shipping calculated at checkout.</p>
-          <div className="mt-6" onClick={onCheckout}>
+          <Button
+            onClick={onCheckout}
+            className="flex items-center w-full mt-6 justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+            disabled={loading}
+            loading={loading}
+          >
+            Checkout
+          </Button>
+          {/* <div className="mt-6" onClick={onCheckout}>
             <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</a>
-          </div>
+          </div> */}
           <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
             <p>
               or

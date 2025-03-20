@@ -9,14 +9,12 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import * as motion from "motion/react-client"
 import "./index.less"
 const Recommend = ({data}) => {
   const { products } = data
-  console.log(products, "Recommend")
 
   const itemBuilder = (product, index) => {
-    const { slug, title, media, priceRangeV2 } = product
+    const { slug, title, media, /*priceRangeV2*/ } = product
     return (
       <Card key={index} className="recommend-item mt-6">
       <CardHeader color="blue-gray" className="relative h-56">

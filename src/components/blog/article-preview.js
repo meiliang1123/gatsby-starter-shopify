@@ -8,7 +8,6 @@ import Tags from './tags'
 import * as styles from './article-preview.module.css'
 
 const ArticlePreview = ({ posts }) => {
-  console.log(posts, "=======")
   if (!posts) return null
   if (!Array.isArray(posts)) return null
 
