@@ -11,7 +11,7 @@ import { useProductSearch } from "@utils/hooks"
 import { getValuesFromQuery } from "@utils/search"
 import { getCurrencySymbol } from "@utils/format-price"
 import { Spinner } from "@components/progress"
-import { Filters } from "@components/Filters"
+import { Filters } from "@components/Filters/index"
 import { SearchProvider } from "@context/search-provider"
 import {
   productList as productListStyle,

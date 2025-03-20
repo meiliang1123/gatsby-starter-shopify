@@ -12,7 +12,6 @@ import Seo from '../../components/blog/seo'
 // import Layout from '../../components/blog/layout'
 import Hero from '../../components/blog/hero'
 // import Tags from '../../components/blog/tags'
-import * as styles from './blog-post.module.css'
 import ProductForPost from "@components/ProductForPost"
 
 const ProductTemplate = ({ data }) => {
@@ -50,14 +49,16 @@ const ProductTemplate = ({ data }) => {
           image={`${featuredProductImage?.resize?.src}`}
         />
         <Hero
+          className="relative"
           image={featuredProductImage?.gatsbyImageData}
           title={title}
           content={description.description}
-        />
-        <div className={styles.body}>
+        >
+          <ProductForPost className="absolute left-0 right-0 bottom-0" id={shopifyId} />
+        </Hero>
+        <div className="w-full mx-auto md:max-w-[85%] lg:max-w-[70%] mt-8">
           {body?.raw && renderRichText(body, options)}
         </div>
-        <ProductForPost id = {shopifyId} />
         {/* <div className={styles.container}>
           <span className={styles.meta}>
             {post.author?.name} &middot;{' '}
