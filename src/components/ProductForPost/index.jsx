@@ -71,7 +71,10 @@ const ProductForPost = (props) => {
   
   return (
     <div className={`flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-md w-full px-5 py-3 text-white ${className}`}>
-      <div className="font-bold text-lg">{data.title}</div>
+      <div className="font-bold text-lg mr-10">
+        {data.title}
+        <div className="w-full text-ellipsis text-xs text-gray-200">{data.description}</div>
+      </div>
       <Link to={`/products/${lowerCase(data.productType)}/${data.handle}`}>
         {/* <Button className="bg-[var(--primary)]">Buy now</Button> */}
         <Button color="white">Buy now</Button>

@@ -238,9 +238,9 @@ function SearchPage({
                 </p>
               )}
               {!isFetching && (
-                <ul className={productListStyle}>
+                <ul className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                   {products.map(({ node }, index) => (
-                    <li className={productListItem} key={node.id}>
+                    <li className="flex justify-center w-full" key={node.id}>
                       <ProductCard
                         eager={index === 0}
                         product={{

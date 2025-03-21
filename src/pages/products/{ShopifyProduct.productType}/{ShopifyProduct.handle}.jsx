@@ -39,8 +39,10 @@ export default function Product({ data: { product, suggestions } }) {
     title,
     description,
     media: images,
+    // descriptionHtml
   } = product
   const { client } = React.useContext(StoreContext)
+  console.log(product)
 
   const [variant, setVariant] = React.useState({ ...initialVariant })
   const [quantity, setQuantity] = React.useState(1)
@@ -201,6 +203,10 @@ export default function Product({ data: { product, suggestions } }) {
             </div>
           </div>
         </div>
+        {/* {descriptionHtml && <div 
+          className="mx-auto mt-10"
+          dangerouslySetInnerHTML={{ __html: descriptionHtml || "" }} 
+        />} */}
       </div>
     </>
   )
@@ -231,6 +237,7 @@ export const query = graphql`
     product: shopifyProduct(id: { eq: $id }) {
       title
       description
+      descriptionHtml
       productType
       productTypeSlug: gatsbyPath(
         filePath: "/products/{ShopifyProduct.productType}"
