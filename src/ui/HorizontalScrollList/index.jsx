@@ -3,7 +3,7 @@ import { Button } from "@material-tailwind/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./index.less"
 
-export default function HorizontalScrollList({ children }) {
+export default function HorizontalScrollList({ children, className }) {
   const scrollContainerRef = useRef(null);
   const itemRefs = useRef({}); // 存储所有子元素的 ref
   const [active, setActive] = useState(null)
@@ -51,7 +51,7 @@ export default function HorizontalScrollList({ children }) {
   }
 
   return (
-    <div className="scroll-container relative w-full overflow-hidden">
+    <div className={`scroll-container relative w-full overflow-hidden ${className}`}>
       {/* 左侧按钮 */}
       <Button
         onClick={() => scroll("left")}
