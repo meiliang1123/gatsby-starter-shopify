@@ -6,7 +6,7 @@ const client = Client.buildClient(
   {
     domain: process.env.GATSBY_SHOPIFY_STORE_URL,
     storefrontAccessToken: process.env.GATSBY_STOREFRONT_ACCESS_TOKEN,
-    // apiVersion: "2024-10"
+    apiVersion: "2024-04"
   },
   fetch
 )

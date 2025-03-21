@@ -11,10 +11,10 @@ export function CartButton({ quantity }) {
 
   return (
     <React.Fragment>
-      <div className="cart-button" onClick={drawerShow}>
+      <button className="cart-button"  onClick={drawerShow}>
         <CartIcon />
         {quantity > 0 && <div className="badge">{quantity}</div>}
-      </div>
+      </button>
       <CartDrawer visible={visible} onClose={() => setVisible(false)} />
     </React.Fragment>
     // <Link

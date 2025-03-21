@@ -5,7 +5,7 @@ import { formatPrice } from "@utils/format-price"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getShopifyImage } from "gatsby-source-shopify"
 // import DeleteIcon from "@icons/delete"
-// import { NumericInput } from "@ui/NumericInput/NumericInput"
+import { NumericInput } from "@ui/NumericInput/NumericInput"
 import "./LineItem.less"
 
 export function LineItem({ item }) {
@@ -13,10 +13,10 @@ export function LineItem({ item }) {
     removeLineItem,
     checkout,
     updateLineItem,
-    // loading,
+    loading,
   } = React.useContext(StoreContext)
   const [quantity, setQuantity] = React.useState(item.quantity)
-
+  // const slug = `/products/${}${item.variant.product.handle}`
   const variantImage = {
     ...item.variant.image,
     originalSrc: item.variant.image.src,
@@ -52,13 +52,13 @@ export function LineItem({ item }) {
     }
   }
 
-  // function doIncrement() {
-  //   handleQuantityChange(Number(quantity || 0) + 1)
-  // }
+  function doIncrement() {
+    handleQuantityChange(Number(quantity || 0) + 1)
+  }
 
-  // function doDecrement() {
-  //   handleQuantityChange(Number(quantity || 0) - 1)
-  // }
+  function doDecrement() {
+    handleQuantityChange(Number(quantity || 0) - 1)
+  }
 
   const image = React.useMemo(
     () =>
@@ -88,7 +88,7 @@ export function LineItem({ item }) {
         <div>
           <div className="flex justify-between text-base font-medium text-gray-900">
             <h3>
-              <a href="#">{item.title}</a>
+              {item.title}
             </h3>
             <p className="ml-4">{`${price} / ${subtotal}`}</p>
           </div>
@@ -96,15 +96,16 @@ export function LineItem({ item }) {
         </div>
         <div className="flex flex-1 items-end justify-between text-sm">
           <p className="text-gray-500">
-            Qty: {quantity}
-            {/* <NumericInput 
+            {/* Qty: {quantity} */}
+            <NumericInput 
               disabled={loading}
+              label={`Qty:${quantity}`}
               value={quantity}
               aria-label="Quantity"
               onIncrement={doIncrement}
               onDecrement={doDecrement}
               onChange={(e) => handleQuantityChange(e.currentTarget.value)}
-            /> */}
+            />
           </p>
 
           <div className="flex">

@@ -66,9 +66,9 @@ const CartPage = () => {
                 ))}
 
                 <tr className={summary}>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
                   <td className={labelColumn}>Subtotal</td>
                   <td className={totals}>
                     {formatPrice(
@@ -78,9 +78,9 @@ const CartPage = () => {
                   </td>
                 </tr>
                 <tr className={summary}>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
                   <td className={labelColumn}>Taxes</td>
                   <td className={totals}>
                     {formatPrice(
@@ -90,16 +90,16 @@ const CartPage = () => {
                   </td>
                 </tr>
                 <tr className={summary}>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
                   <td className={labelColumn}>Shipping</td>
                   <td className={totals}>Calculated at checkout</td>
                 </tr>
                 <tr className={grandTotal}>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
-                  <td className={collapseColumn}></td>
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
+                  <td className={collapseColumn} aria-label="collapse colimn" />
                   <td className={labelColumn}>Total Price</td>
                   <td className={totals}>
                     {formatPrice(

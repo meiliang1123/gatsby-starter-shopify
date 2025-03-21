@@ -9,14 +9,12 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import * as motion from "motion/react-client"
 import "./index.less"
 const Recommend = ({data}) => {
   const { products } = data
-  console.log(products, "Recommend")
 
   const itemBuilder = (product, index) => {
-    const { slug, title, media, priceRangeV2 } = product
+    const { slug, title, media, /*priceRangeV2*/ } = product
     return (
       <Card key={index} className="recommend-item mt-6">
       <CardHeader color="blue-gray" className="relative h-56">
@@ -27,13 +25,6 @@ const Recommend = ({data}) => {
           loading="eager"
         />
       </CardHeader>
-      <motion.div
-        className="motion-container overflow-hidden"
-        initial={{ height: 0}}  // 初始宽度 80%
-        whileInView={{ height: "auto"}}  // 进入视口后变为 100%
-        transition={{ duration: 0.8, ease: "easeOut" }} // 过渡动画
-        viewport={{ amount: 0.8}} // 进入 10% 视口后触发，仅执行一次
-      >
         <CardBody>
           <Typography variant="h5" color="blue-gray" className="mb-2">
             {title}
@@ -44,7 +35,6 @@ const Recommend = ({data}) => {
             night life in Barcelona.
           </Typography>
         </CardBody>
-      </motion.div>
       <CardFooter className="pt-0">
         <Link
           className="item-button"
@@ -57,13 +47,16 @@ const Recommend = ({data}) => {
   }
 
   return (
-    <div className="recommend-contaner grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:5 md:m-20">
-      {
-        products.map((item, index) => {
-          return itemBuilder(item, index)
-        })
-      }
-    </div>
+    <>
+      <h1 className="text-4xl font-bold text-center px-5 mt-14 mb-8">Recommend for you</h1>
+      <div className="recommend-contaner grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:5 md:mx-20">
+        {
+          products.map((item, index) => {
+            return itemBuilder(item, index)
+          })
+        }
+      </div>
+    </>
   )
 }
 

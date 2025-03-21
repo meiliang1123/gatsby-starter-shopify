@@ -50,6 +50,7 @@ export function ProductCard({ product, eager }) {
           <div className="product-image aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto" data-name="product-image-box">
             <GatsbyImage
               alt={firstImage?.image?.altText ?? title}
+              className="rounded-sm"
               // image={firstImage?.gatsbyImageData ?? storefrontImageData}
               image={firstImage?.image?.gatsbyImageData ?? storefrontImageData}
               loading={eager ? "eager" : "lazy"}
@@ -106,7 +107,19 @@ export const query = graphql`
         amount
         currencyCode
       }
+      maxVariantPrice {
+        amount
+        currencyCode
+      }
     }
     vendor
+    description
+    descriptionHtml
+    productType
+    seo {
+      description
+      title
+    }
+    tags
   }
 `

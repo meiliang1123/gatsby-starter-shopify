@@ -15,6 +15,7 @@ export function Filters({
   vendors,
   filters,
   setFilters,
+  className
 }) {
   const updateFilter = (key, value) => {
     setFilters((filters) => ({ ...filters, [key]: value }))
@@ -30,7 +31,7 @@ export function Filters({
   }
 
   return (
-    <>
+    <div className={`${className}`}>
       <CheckFilter
         name="Type"
         items={productTypes}
@@ -93,6 +94,6 @@ export function Filters({
         selectedItems={filters.tags}
         setSelectedItems={(value) => updateFilter("tags", value)}
       />
-    </>
+    </div>
   )
 }

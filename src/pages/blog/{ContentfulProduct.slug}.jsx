@@ -1,5 +1,6 @@
+'use client'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { /* Link, */ graphql } from 'gatsby'
 // import get from 'lodash/get'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
@@ -10,21 +11,22 @@ import readingTime from 'reading-time'
 import Seo from '../../components/blog/seo'
 // import Layout from '../../components/blog/layout'
 import Hero from '../../components/blog/hero'
-import Tags from '../../components/blog/tags'
-import * as styles from './blog-post.module.css'
+// import Tags from '../../components/blog/tags'
+import ProductForPost from "@components/ProductForPost"
 
-const BlogPostTemplate = ({ data }) => {
-  const { contentfulBlogPost: post, previous, next } = data
-  console.log(data, "博文详情", post)
+const ProductTemplate = ({ data }) => {
+  const { contentfulProduct } = data
+  const { shopifyId, body, title, description, featuredProductImage } = contentfulProduct
+  console.log(data, "产品详情", shopifyId, title)
     // const post = get(this.props, 'data.contentfulBlogPost')
     // const previous = get(this.props, 'data.previous')
     // const next = get(this.props, 'data.next')
-    const plainTextDescription = documentToPlainTextString(
-      JSON.parse(post.description.raw)
-    )
-    const plainTextBody = documentToPlainTextString(JSON.parse(post.body.raw))
+    // const plainTextDescription = documentToPlainTextString(
+    //   JSON.parse(post.description.raw)
+    // )
+    const plainTextBody = documentToPlainTextString(JSON.parse(body?.raw || '{}'))
     const { minutes: timeToRead } = readingTime(plainTextBody)
-    
+    console.log(timeToRead)
     const options = {
       renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
@@ -32,26 +34,32 @@ const BlogPostTemplate = ({ data }) => {
         return (
            <GatsbyImage
               image={getImage(gatsbyImage)}
-              alt={description || ""}
+              alt={description}
            />
          )
         },
       },
     };
-
+    console.log(contentfulProduct, "post")
     return (
       <>
         <Seo
-          title={post.title}
-          description={plainTextDescription}
-          image={`http:${post.heroImage.resize.src}`}
+          title={title || ""}
+          description={description.description}
+          image={`${featuredProductImage?.resize?.src}`}
         />
         <Hero
-          image={post.heroImage?.gatsbyImage}
-          title={post.title}
-          content={post.description}
-        />
-        <div className={styles.container}>
+          className="relative"
+          image={featuredProductImage?.gatsbyImageData}
+          title={title}
+          content={description.description}
+        >
+          <ProductForPost className="absolute left-0 right-0 bottom-0" id={shopifyId} />
+        </Hero>
+        <div className="w-full mx-auto md:max-w-[85%] lg:max-w-[70%] mt-8">
+          {body?.raw && renderRichText(body, options)}
+        </div>
+        {/* <div className={styles.container}>
           <span className={styles.meta}>
             {post.author?.name} &middot;{' '}
             <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
@@ -83,49 +91,36 @@ const BlogPostTemplate = ({ data }) => {
               </nav>
             )}
           </div>
-        </div>
+        </div> */}
       </>
     )
   }
 
-export default BlogPostTemplate
+export default ProductTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $slug: String!
-    $previousPostSlug: String
-    $nextPostSlug: String
-  ) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      slug
-      title
-      author {
-        name
+  query ProductBySlug($slug: String!) {
+    contentfulProduct(slug: { eq: $slug }) {
+      id
+      internalName
+      name
+      price
+      shopifyId
+      body {
+        raw
       }
-      publishDate(formatString: "MMMM Do, YYYY")
-      rawDate: publishDate
-      heroImage {
-        gatsbyImage(layout: FULL_WIDTH, placeholder: BLURRED, width: 1280)
+      description {
+        description
+      }
+      featuredProductImage {
+        gatsbyImageData(layout: FIXED)
         resize(height: 630, width: 1200) {
           src
         }
       }
-      body {
-        raw
-        
+      productImages {
+        gatsbyImageData(layout: FIXED)
       }
-      tags
-      description {
-        raw
-      }
-    }
-    previous: contentfulBlogPost(slug: { eq: $previousPostSlug }) {
-      slug
-      title
-    }
-    next: contentfulBlogPost(slug: { eq: $nextPostSlug }) {
-      slug
-      title
     }
   }
 `
