@@ -6,6 +6,7 @@ import { StoreContext } from "@context/store-context"
 // import Logo from "@icons/logo"
 import { Navigation } from "@components/Navigation/Navigation"
 import { CartButton } from "@components/CartButton/CartButton"
+import AccountButton from "@components/AccountButton"
 // import { CartButton } from "@components/cart-button"
 import SearchIcon from "@icons/search"
 import { Toast } from "@components/toast"
@@ -71,6 +72,7 @@ export function Header({className}) {
           </Link>
           {/* <CartButton quantity={quantity} /> */}
           <CartButton quantity={quantity} />
+          <AccountButton />
         </div>
         <Collapse open={openNav}>
           <Navigation onNavChange={() => setOpenNav(false)} />
