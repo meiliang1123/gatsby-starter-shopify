@@ -13,7 +13,7 @@ import {
 import { CgMail, CgMenuBoxed, CgLogOff } from "react-icons/cg";
 import "./index.less"
 
-const defaultAuatarPngAsset = "default_avatar.png"
+const defaultAuatarPngAsset = "/default_avatar.png"
 const AccountButton = () => {
   const {  loginWithRedirect, getAccessTokenSilently, logout, user, isAuthenticated, /* isLoading */ } = useAuth0()
   const [openPopover, setOpenPopover] = React.useState(false);
@@ -23,12 +23,20 @@ const AccountButton = () => {
     if (!isAuthenticated) {
       getAccessTokenSilently()
         .then(token => {
-          console.log("Access token refreshed:=====", token)
-          setImgSrc(user.picture || defaultAuatarPngAsset)
+          console.log("Access token refreshed:=====")
         })
         .catch(err => console.error("Error refreshing token:=====", err));
     }
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    setImgSrc(user?.picture || defaultAuatarPngAsset)
+  }, [user])
+
+  const triggers = {
+    onMouseEnter: () => setOpenPopover(true),
+    onMouseLeave: () => setOpenPopover(false),
+  };
 
   // 登出
   const onLogout = () => {
@@ -36,12 +44,12 @@ const AccountButton = () => {
   }
 
   return <Popover open={openPopover} handler={setOpenPopover} placement="bottom-end">
-    <PopoverHandler className="cursor-pointer inline-block relative object-cover object-center !rounded-full w-8 h-8 ml-3 rounded-lg">
+    <PopoverHandler {...triggers} className="cursor-pointer inline-block relative object-cover object-center !rounded-full w-8 h-8 ml-3 rounded-lg">
       <img 
         src={imgSrc} onError={() => setImgSrc(defaultAuatarPngAsset)}
       />
     </PopoverHandler>
-    <PopoverContent className="w-72">
+    <PopoverContent className="w-72 z-[1001]" {...triggers}>
       {isAuthenticated && <div className="mb-4 flex items-center gap-4 border-b border-blue-gray-50 pb-4">
           <img 
             className="inline-block relative object-cover object-center !rounded-full w-12 h-12 rounded-lg" 

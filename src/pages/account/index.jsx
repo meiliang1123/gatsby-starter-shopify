@@ -9,7 +9,7 @@ const Account = () => {
   useEffect(() => {
     if (!isAuthenticated) {
       getAccessTokenSilently()
-        .then(token => console.log("Access token refreshed:=====", token))
+        .then(token => console.log("Access token refreshed:====="))
         .catch(err => console.error("Error refreshing token:=====", err));
     }
   }, [isAuthenticated])
