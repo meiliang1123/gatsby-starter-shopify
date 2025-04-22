@@ -6,7 +6,7 @@ import "./Footer.less"
 
 export function Footer() {
   return (
-    <footer className="footer-container w-full p-4 text-gray-600 dark:text-white">
+    <footer className="footer-container w-full p-4 bg-blue-gray-900 text-white dark:text-white">
       <hr className="my-8 border-blue-gray-50" />
       <div className="gap-y-6 gap-x-12 text-center md:justify-between">
         <Typography variant="paragraph" className="block text-center font-normal">
