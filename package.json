@@ -30,6 +30,7 @@
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "debounce": "^1.2.1",
     "dotenv": "^10.0.0",
     "gatsby": "^5.14.1",
