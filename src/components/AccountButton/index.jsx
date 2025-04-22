@@ -45,13 +45,15 @@ const AccountButton = () => {
 
   return <Popover open={openPopover} handler={setOpenPopover} placement="bottom-end">
     <PopoverHandler {...triggers} className="cursor-pointer inline-block relative object-cover object-center !rounded-full w-8 h-8 ml-3 rounded-lg">
-      <img 
+      <img
+        alt="avatar"
         src={imgSrc} onError={() => setImgSrc(defaultAuatarPngAsset)}
       />
     </PopoverHandler>
     <PopoverContent className="w-72 z-[1001]" {...triggers}>
       {isAuthenticated && <div className="mb-4 flex items-center gap-4 border-b border-blue-gray-50 pb-4">
           <img 
+            alt="avatar"
             className="inline-block relative object-cover object-center !rounded-full w-12 h-12 rounded-lg" 
             src={imgSrc} onError={() => setImgSrc(defaultAuatarPngAsset)}
           />

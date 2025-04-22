@@ -37,7 +37,7 @@ const TABLE_ROWS = [
 ];
 
 const Account = () => {
-  const { getAccessTokenSilently, user, isAuthenticated, isLoading, } = useAuth0()
+  const { getAccessTokenSilently, user, isAuthenticated, /* isLoading, */ } = useAuth0()
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
