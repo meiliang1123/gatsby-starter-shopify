@@ -14,8 +14,6 @@ import { Spinner } from "@components/progress"
 import { Filters } from "@components/Filters/index"
 import { SearchProvider } from "@context/search-provider"
 import {
-  productList as productListStyle,
-  productListItem,
   pagination,
   paginationButton,
   progressStyle,

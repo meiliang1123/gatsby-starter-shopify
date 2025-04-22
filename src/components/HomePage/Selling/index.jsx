@@ -5,7 +5,6 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
   Button,
 } from "@material-tailwind/react";
@@ -13,7 +12,7 @@ import {
 import HorizontalScrollList from "@ui/HorizontalScrollList"
 import "./index.less"
 const Selling = ({data}) => {
-  console.log(data, "selling")
+  // console.log(data, "selling")
   const products = data.products || []
 
   const itemBuilder = (product, index) => {

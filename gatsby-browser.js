@@ -13,12 +13,15 @@ export const wrapRootElement = ({ element, props }) => {
     // navigate(appState?.returnTo || '/', { replace: true });
     console.log(appState, "appState")
   };
-
   return (
     <Auth0Provider
-      domain={process.env.AUTH0_DOMAIN}
-      clientId={process.env.AUTH0_CLIENTID}
-      redirectUri={window.location.origin}
+      domain={process.env.GATSBY_AUTH0_DOMAIN}
+      clientId={process.env.GATSBY_AUTH0_CLIENTID}
+      // redirectUri={window.location.origin}
+      cacheLocation="localstorage"
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}
       onRedirectCallback={onRedirectCallback}
     >
       <StoreProvider>

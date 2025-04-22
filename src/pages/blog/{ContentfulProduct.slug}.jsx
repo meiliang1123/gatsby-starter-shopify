@@ -2,12 +2,13 @@
 import React from 'react'
 import { /* Link, */ graphql } from 'gatsby'
 // import get from 'lodash/get'
-import { renderRichText } from 'gatsby-source-contentful/rich-text'
+// import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+// import { BLOCKS } from '@contentful/rich-text-types'
+// import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import readingTime from 'reading-time'
 
+import RichTextRenderer from "@components/RichTextRenderer"
 import Seo from '../../components/blog/seo'
 // import Layout from '../../components/blog/layout'
 import Hero from '../../components/blog/hero'
@@ -16,7 +17,7 @@ import ProductForPost from "@components/ProductForPost"
 
 const ProductTemplate = ({ data }) => {
   const { contentfulProduct } = data
-  const { shopifyId, body, title, description, featuredProductImage } = contentfulProduct
+  const { shopifyId, body, title, description, featuredProductImage, bodyReferences } = contentfulProduct
   console.log(data, "产品详情", shopifyId, title)
     // const post = get(this.props, 'data.contentfulBlogPost')
     // const previous = get(this.props, 'data.previous')
@@ -27,20 +28,8 @@ const ProductTemplate = ({ data }) => {
     const plainTextBody = documentToPlainTextString(JSON.parse(body?.raw || '{}'))
     const { minutes: timeToRead } = readingTime(plainTextBody)
     console.log(timeToRead)
-    const options = {
-      renderNode: {
-        [BLOCKS.EMBEDDED_ASSET]: (node) => {
-        const { gatsbyImage, description } = node.data.target
-        return (
-           <GatsbyImage
-              image={getImage(gatsbyImage)}
-              alt={description}
-           />
-         )
-        },
-      },
-    };
-    console.log(contentfulProduct, "post")
+
+    console.log(contentfulProduct, "post", bodyReferences)
     return (
       <>
         <Seo
@@ -57,7 +46,7 @@ const ProductTemplate = ({ data }) => {
           <ProductForPost className="absolute left-0 right-0 bottom-0" id={shopifyId} />
         </Hero>
         <div className="w-full mx-auto md:max-w-[85%] lg:max-w-[70%] mt-8">
-          {body?.raw && renderRichText(body, options)}
+          <RichTextRenderer content={body} />
         </div>
         {/* <div className={styles.container}>
           <span className={styles.meta}>
@@ -108,6 +97,21 @@ export const pageQuery = graphql`
       shopifyId
       body {
         raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            id: contentful_id
+            gatsbyImageData(layout: FIXED, width: 264)
+          }
+        }
+      }
+      bodyReferences: body {
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            gatsbyImageData(layout: FIXED)
+          }
+        }
       }
       description {
         description

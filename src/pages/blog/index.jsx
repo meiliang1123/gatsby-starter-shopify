@@ -87,7 +87,7 @@ const BlogIndex = ({ data }) => {
         title={author.name}
         content={author.shortBio}
       /> */}
-      <h1 className="text-4xl font-bold text-center px-5 mt-14 mb-8">News atest</h1>
+      <h1 className="text-4xl font-bold text-center px-5 mt-14 mb-8">News Latest</h1>
       <ArticlePreview type="post" data={posts} />
       <h1 className="text-4xl font-bold text-center px-5 mt-14 mb-8">Artical about product</h1>
       <ArticlePreview type="product" data={products} />
