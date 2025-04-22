@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { fetchRequest } from "@utils/fetch.js"
 import moment from "moment"
 import {
-  ArrowDownTrayIcon,
+  // ArrowDownTrayIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import {
@@ -226,7 +226,7 @@ const Account = () => {
                             color="blue-gray"
                             className="font-normal capitalize"
                           >
-                            {account.split("-").join(" ")} {accountNumber}
+                            {account?.split("-").join(" ")} {accountNumber}
                           </Typography>
                           <Typography
                             variant="small"

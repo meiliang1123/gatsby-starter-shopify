@@ -95,7 +95,7 @@ export function LineItem({ item }) {
           <p className="mt-1 text-sm text-gray-500">{item.variant.title === "Default Title" ? "" : item.variant.title}</p>
         </div>
         <div className="flex flex-1 items-end justify-between text-sm">
-          <p className="text-gray-500">
+          <div className="text-gray-500">
             {/* Qty: {quantity} */}
             <NumericInput 
               disabled={loading}
@@ -106,7 +106,7 @@ export function LineItem({ item }) {
               onDecrement={doDecrement}
               onChange={(e) => handleQuantityChange(e.currentTarget.value)}
             />
-          </p>
+          </div>
 
           <div className="flex">
             <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={onRemove}>Remove</button>

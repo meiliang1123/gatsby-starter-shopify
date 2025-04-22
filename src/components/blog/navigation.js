@@ -10,12 +10,12 @@ const Navigation = () => (
       <span className={styles.navigationItem}>Gatsby Starter Contentful</span>
     </Link>
     <ul className={styles.navigation}>
-      <li className={styles.navigationItem}>
+      <li className={styles.navigationItem} key="home">
         <Link to="/" activeClassName="active">
           Home
         </Link>
       </li>
-      <li className={styles.navigationItem}>
+      <li className={styles.navigationItem} key="blog">
         <Link to="/blog/" activeClassName="active">
           Blog
         </Link>

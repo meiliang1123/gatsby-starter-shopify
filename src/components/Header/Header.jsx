@@ -26,17 +26,28 @@ export function Header({className}) {
   const { checkout, loading, didJustAddToCart } = React.useContext(StoreContext)
    const [openNav, setOpenNav] = React.useState(false);
 
-  const items = checkout ? checkout.lineItems : []
+  // const items = checkout ? checkout.lineItems : []
 
-  const quantity = items.reduce((total, item) => {
-    return total + item.quantity
-  }, 0)
+  // const quantity = items.reduce((total, item) => {
+  //   return total + item.quantity
+  // }, 0)
+
+  const quantity = React.useMemo(() => {
+    if (!checkout || !checkout.lineItems) return 0
+    return checkout.lineItems.reduce((total, item) => total + item.quantity, 0)
+  }, [checkout])
 
   React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false),
-    );
+    const handleResize = () => {
+      if (window.innerWidth >= 960) setOpenNav(false)
+    }
+  
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+    // window.addEventListener(
+    //   "resize",
+    //   () => window.innerWidth >= 960 && setOpenNav(false),
+    // );
   }, []);
 
   return (
