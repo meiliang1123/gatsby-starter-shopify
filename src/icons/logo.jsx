@@ -4,7 +4,7 @@ function Logo(props) {
   return (
     <img
       style={{width: 90}}
-      src="/logo.png"
+      src="/logo.svg"
       alt="logo"
     />
   )

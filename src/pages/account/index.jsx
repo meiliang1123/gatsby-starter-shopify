@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { fetchRequest } from "@utils/fetch.js"
-import moment from "moment"
+import dayjs from 'dayjs'
 import {
   // ArrowDownTrayIcon,
   MagnifyingGlassIcon,
@@ -60,7 +60,7 @@ const Account = () => {
       img: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
       amount: `${item.presentment_currency}${item.total_price}`,
       commodity: item.line_items?.map(i => i.name).join(","),
-      date: moment(item.created_at).format("YYYY/MM/DD HH:mm:SS"),
+      date: dayjs(item.created_at).format("YYYY/MM/DD HH:mm:SS"),
       status: "paid",
       account: item.payment_gateway_names.join(" "),
       accountNumber: item.order_number,
@@ -96,6 +96,7 @@ const Account = () => {
             <div className="w-full md:w-72">
               <Input
                 label="Search"
+                aria-label="order Search"
                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
               />
             </div>
@@ -240,7 +241,7 @@ const Account = () => {
                     </td>
                     <td className={classes}>
                       <Tooltip content="Edit User">
-                        <IconButton variant="text">
+                        <IconButton variant="text" aria-label="Edit User">
                           {/* <PencilIcon className="h-4 w-4" /> */}
                         </IconButton>
                       </Tooltip>
@@ -253,33 +254,21 @@ const Account = () => {
         </table>
       </CardBody>
       <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-        <Button variant="outlined" size="sm">
+        <Button variant="outlined" size="sm" aria-label="Go to page 1">
           Previous
         </Button>
         <div className="flex items-center gap-2">
-          <IconButton variant="outlined" size="sm">
+          <IconButton variant="outlined" size="sm" aria-label="Go to page 1">
             1
           </IconButton>
-          <IconButton variant="text" size="sm">
+          <IconButton variant="text" size="sm" aria-label="Go to page 1">
             2
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            3
-          </IconButton>
-          <IconButton variant="text" size="sm">
+          </IconButton>\
+          <IconButton variant="text" size="sm" aria-label="Go to page 1">
             ...
           </IconButton>
-          <IconButton variant="text" size="sm">
-            8
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            9
-          </IconButton>
-          <IconButton variant="text" size="sm">
-            10
-          </IconButton>
         </div>
-        <Button variant="outlined" size="sm">
+        <Button variant="outlined" size="sm" aria-label="Go to page 1">
           Next
         </Button>
       </CardFooter>
