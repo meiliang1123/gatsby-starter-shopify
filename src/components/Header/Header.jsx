@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 // import { StoreContext } from "../context/store-context"
 import { StoreContext } from "@context/store-context"
 
-// import Logo from "@icons/logo"
+import Logo from "@icons/logo"
 import { Navigation } from "@components/Navigation/Navigation"
 import { CartButton } from "@components/CartButton/CartButton"
 import AccountButton from "@components/AccountButton"
@@ -56,11 +56,10 @@ export function Header({className}) {
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             variant="h6"
-            className="mr-4 cursor-pointer py-1.5 lg:ml-2 flex-1 lg:flex-grow-0"
+            className="mr-4 cursor-pointer py-1.5 lg:ml-2 flex-1"
           >
             <Link to="/">
-              HandeDock
-              {/* <Logo /> */}
+              <Logo />
             </Link>
           </Typography>
           <div className="flex-1 justify-center hidden lg:flex">
