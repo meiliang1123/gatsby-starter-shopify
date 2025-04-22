@@ -56,7 +56,7 @@ export function Header({className}) {
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             variant="h6"
-            className="mr-4 cursor-pointer py-1.5 lg:ml-2 flex-1"
+            className="mr-4 cursor-pointer py-1.5 lg:ml-2 flex-1 basis-20 lg:flex-grow-0 "
           >
             <Link to="/">
               <Logo />
