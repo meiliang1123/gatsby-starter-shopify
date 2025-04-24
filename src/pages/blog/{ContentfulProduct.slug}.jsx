@@ -18,7 +18,7 @@ import ProductForPost from "@components/ProductForPost"
 const ProductTemplate = ({ data }) => {
   const { contentfulProduct } = data
   const { shopifyId, body, title, description, featuredProductImage, bodyReferences } = contentfulProduct
-  console.log(data, "产品详情", shopifyId, title)
+  console.log(data, "产品详情=====", shopifyId, title, body)
     // const post = get(this.props, 'data.contentfulBlogPost')
     // const previous = get(this.props, 'data.previous')
     // const next = get(this.props, 'data.next')
@@ -102,6 +102,8 @@ export const pageQuery = graphql`
             contentful_id
             id: contentful_id
             gatsbyImageData(layout: FIXED, width: 264)
+            title
+            description
           }
         }
       }

@@ -14,14 +14,15 @@ const RichTextRenderer = ({ className, content }) => {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const assetId = node?.data?.target?.sys?.id;
         if (!assetId || !references.find(i => i.id === assetId)) return null;
-        console.log("post assetId", references.find(i => i.id === assetId));
-        const image = getImage(references.find(i => i.id === assetId).gatsbyImageData);
+        const currentAsset = references.find(i => i.id === assetId);
+        console.log("post assetId", currentAsset);
+        const { gatsbyImageData, title } = currentAsset;
         return (
-          <GatsbyImage
-            image={image}
-            alt={""}
+          gatsbyImageData ? <GatsbyImage
+            image={gatsbyImageData}
+            alt={title}
             className=""
-          />
+          /> : null
         );
       },
 
