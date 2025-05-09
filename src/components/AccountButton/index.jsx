@@ -13,21 +13,21 @@ import {
 import { CgMail, CgMenuBoxed, CgLogOff } from "react-icons/cg";
 import "./index.less"
 
-const defaultAuatarPngAsset = "/default_avatar.png"
+const defaultAuatarPngAsset = "/images/default_avatar.png"
 const AccountButton = () => {
   const {  loginWithRedirect, getAccessTokenSilently, logout, user, isAuthenticated, /* isLoading */ } = useAuth0()
   const [openPopover, setOpenPopover] = React.useState(false);
   const [imgSrc, setImgSrc] = useState(defaultAuatarPngAsset)
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
       getAccessTokenSilently()
         .then(token => {
           console.log("Access token refreshed:=====")
         })
         .catch(err => console.error("Error refreshing token:=====", err));
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   useEffect(() => {
     setImgSrc(user?.picture || defaultAuatarPngAsset)

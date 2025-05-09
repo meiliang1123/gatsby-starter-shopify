@@ -18,7 +18,7 @@ const Selling = ({data}) => {
   const itemBuilder = (product, index) => {
     const { slug, title, media, tags, description /* priceRangeV2 */ } = product
     return (
-      <Card className="flex-row shadow-none border border-gray-200 w-full h-[15rem] lg:w-[35rem] lg-h-[20rem] my-20 rounded-sm">
+      <Card key={slug+index} className="flex-row shadow-none border border-gray-200 w-full h-[15rem] lg:w-[35rem] lg-h-[20rem] my-20 rounded-sm">
         <CardHeader
           shadow={false}
           floated={false}
