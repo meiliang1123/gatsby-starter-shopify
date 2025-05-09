@@ -2,11 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html * {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: var(--font-body);
+  background: var(--background);
+  font-family: var(--font-sans);
+  /* font-family: 'Montserrat', sans-serif; */
   color: var(--text-color);
   height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--semibold);
+  line-height: var(--dense);
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+a.active {
+  font-weight: var(--bold);
+}
+
+tt,
+code,
+kbd {
+  background: var(--black-fade-5);
+  padding-bottom: 0.2em;
+  padding-top: 0.2em;
+}
+
+tt,
+code,
+kbd {
+  font-family: var(--font-monospace);
+  font-size: 90%;
+}
+
+tt,
+code {
+  background-color: var(--black-fade-5);
+  border-radius: var(--radius-sm);
+  font-weight: var(--medium);
+  padding: 0.2em 0;
+}
+
+code:before,
+code:after,
+tt:before,
+tt:after {
+  content: ' ';
+  letter-spacing: -0.2em;
+}
+
+pre,
+code {
+  font-family: var(--font-monospace);
+}
+
+
 .body-mask::before{
   content: "";
     position: fixed;

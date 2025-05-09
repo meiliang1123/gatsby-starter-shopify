@@ -1,0 +1,18 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="32" height="32">
+	<title>新建项目</title>
+	<style>
+		.s0 { fill: #ffffff } 
+		.s1 { fill: #242424 } 
+	</style>
+	<path fill-rule="evenodd" class="s0" d="m6 0h38c3.3 0 6 2.7 6 6v38c0 3.3-2.7 6-6 6h-38c-3.3 0-6-2.7-6-6v-38c0-3.3 2.7-6 6-6z"/>
+	<g id="组 2" style="display: none">
+		<path id="Layer copy" fill-rule="evenodd" class="s0" d="m27 10v20h-20v-20z"/>
+		<path id="Layer copy 2" fill-rule="evenodd" class="s0" d="m41 10v20h-20v-20z"/>
+		<path id="Layer copy 3" fill-rule="evenodd" class="s0" d="m34 15v19h-19v-19z"/>
+		<path id="Layer copy 4" fill-rule="evenodd" class="s0" d="m36.4 26.8l-14.8 15-7.8-7.8 14.8-14.9z"/>
+	</g>
+	<g id="组 1">
+		<path class="s1" d="m37.3 11h-10.9l-4.7 4.9h14l2.6 2.6-16.3 16.8 2.8 2.9q0.2 0.2 0.5 0.2 0.4 0 0.6-0.2l18.5-19.1q0.2-0.2 0.2-0.6 0-0.3-0.2-0.6l-6.5-6.7q-0.3-0.2-0.6-0.2z"/>
+		<path class="s1" d="m29.4 20.7h-14.9l-2.1-2.2 7.3-7.5h-6.4q-0.3 0-0.6 0.2l-6.5 6.7q-0.1 0.2-0.1 0.3-0.1 0.2-0.1 0.3 0 0.2 0.1 0.4 0 0.1 0.1 0.2l12.4 12.8 3.3-3.5z"/>
+	</g>
+</svg>

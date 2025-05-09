@@ -11,6 +11,7 @@ const Frontpage = ({ data }) => {
     const { slug, title, media, priceRangeV2 } = product
     return (
         <motion.div
+          key={index+slug}
           className="motion-container flex-shrink-0"
           style={{flex: `${index + 1}`}}
           // initial={{ scale: 1 }}  // 进入视口后变为 100%

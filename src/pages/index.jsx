@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import Frontpage from "@components/HomePage/Frontpage"
 import Recommend from "@components/HomePage/Recommend"
 import Selling from "@components/HomePage/Selling"
+import SubscribeForm from "@components/SubscribeForm"
 // import { ProductListing } from "@components/ProductList/ProductListing"
 import { Button } from "@material-tailwind/react";
 import { MdArrowRightAlt } from "react-icons/md";
@@ -72,14 +73,14 @@ const IndexPage = ({ data }) => {
       <Hero />
       <div className="w-full bg-gray-900 h-[600px] overflow-clip home-video relative">
         <video muted autoPlay loop playsInline className="w-full">
-          <source src="/index.webm" type="video/webm" />
+          <source src="/videos/index.webm" type="video/webm" />
           你的浏览器不支持 WebM 格式。
         </video>
         <div className="absolute flex text-white top-0 left-0 h-full w-full bg-black bg-opacity-20 backdrop-blur-md text-left">
           <div className="py-4 flex flex-col justify-center ml-10 lg:ml-[100px] lg:w-[40vw] w-full min-w-[300px]">
             <h2 className="text-3xl font-bold">
               <span className="text-white">
-                Never miss a shot
+                One Core, Many Possibilities
               </span>
             </h2>
             <p className="text-lg">Call us at 877.503.2143 for more information about our business solutions. Or, fill out this form and we’ll contact you directly.</p>
@@ -92,6 +93,7 @@ const IndexPage = ({ data }) => {
       <Selling data={data.selling} />
       {/* <ProductListing products={data?.shopifyCollection?.products} /> */}
       {/* <ProductListing products={data?.all?.nodes} /> */}
+      <SubscribeForm className="mb-3" />
     </>
   )
 }
