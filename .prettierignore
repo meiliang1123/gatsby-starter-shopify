@@ -4,3 +4,7 @@ static
 node_modules
 .vscode
 .idea
+build
+dist
+*.min.js
+*.svg
