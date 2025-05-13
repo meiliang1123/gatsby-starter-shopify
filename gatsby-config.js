@@ -3,13 +3,13 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    siteTitle: "handedock",
-    siteTitleDefault: "handedock store",
-    siteUrl: "https://shopify-demo.gatsbyjs.com",
+    siteTitle: "Docky Lab",
+    siteTitleDefault: "Docky Lab | One Core, Many Possibilities.",
+    siteUrl: "https://dockylab.com",
     siteDescription:
       "A Gatsby starter using the latest Shopify plugin showcasing a store with product overview, individual product pages, and a cart.",
     siteImage: "/default-og-image.jpg",
-    twitter: "@gatsbyjs",
+    twitter: "@dockylab",
   },
   flags: {
     FAST_DEV: true,

@@ -61,20 +61,20 @@ export function Seo({
       <meta name="twitter:creator" content={twitter} />
       <link
         rel="icon"
-        type="image/png"
+        type="image/svg"
         sizes="32x32"
-        href="/favicon-32x32.png"
+        href="/favicon-32x32.svg"
       />
       <link
         rel="icon"
-        type="image/png"
+        type="image/svg"
         sizes="16x16"
-        href="/favicon-16x16.png"
+        href="/favicon-16x16.svg"
       />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/apple-touch-icon.png"
+        href="/favicon-32x32.svg"
       />
       {/* The following meta tag is for demonstration only and can be removed */}
       {!!process.env.GATSBY_DEMO_STORE && (

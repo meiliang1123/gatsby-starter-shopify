@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { fetchRequest } from "@utils/fetch.js"
 import dayjs from 'dayjs'
+
 import {
   // ArrowDownTrayIcon,
   MagnifyingGlassIcon,
@@ -41,12 +42,12 @@ const Account = () => {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isAuthenticated) {
       getAccessTokenSilently()
       .then(token => console.log("Access token refreshed:====="))
       .catch(err => console.error("Error refreshing token:=====", err));
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, getAccessTokenSilently])
   
   useEffect(() => {
     if(user?.email){
@@ -69,14 +70,13 @@ const Account = () => {
   })
 
   const fetchUserOrders = async () => {
-    const res = await fetchRequest(`https://handedock.com/api/orders/`,{
+    const res = await fetchRequest(`${process.env.GATSBY_WORKER_DOMIN}/shopify/orders`,{
       queryParams: {
         email: user?.email
       }
     })
-    console.log(res, "*******")
-    if(res){
-      setOrders(res || [])
+    if(res && res.status === 200){
+      setOrders(res.data || [])
     }
   };
 
